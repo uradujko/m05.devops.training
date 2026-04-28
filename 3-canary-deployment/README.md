@@ -10,9 +10,9 @@
 
 ## Preparation
 
-1. Pick a unique Kubernetes namespace for your group (for example: `team-dolphins`).
+1. Pick a unique Kubernetes namespace for your group (for example: `g1`, `g2`, etc)
 2. Replace the `DOCKER_USERNAME` placeholder in both deployment manifests with your Docker Hub username.
-3. Replace the nodePort in `service.yml` for your team's port (30040 or 30080)
+3. Replace the nodePort in `service.yml` for your team's port (between 30040 and 30080)
 4. Commit those changes so your pipeline references the correct image repository.
 
 ## Exercise tasks

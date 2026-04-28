@@ -15,9 +15,9 @@ Your goal is to create a Semaphore pipeline that builds the Docker image, pushes
 ## Preparation
 
 1. Review `deployment.yml` and `service.yml` so you understand how the application is deployed and exposed.
-2. Pick a unique Kubernetes namespace for your group (for example: `team-sharks`).
+2. Pick a unique Kubernetes namespace for your group (for example: `g1`, `g2`, etc).
 3. Edit `deployment.yml` and replace `DOCKER_USERNAME` with your Docker Hub username
-4. Edit `service.yml` and change `nodePort` to either 30040 or 30080 (each group should pick a different port)
+4. Edit `service.yml` and change `nodePort` between 30040 and 30080 (each group should pick a different port)
 4. Commit the changes to the repository
 
 ## Exercise tasks
