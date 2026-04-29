@@ -26,14 +26,19 @@ blocks:
             - 'docker push $DOCKER_USERNAME/my-flask-image:latest'
       secrets:
         - name: docker-uradujko
-  - name: "\U0001F680 Deploy"
+  - name: Deploy to Kubernetes
     dependencies:
       - Build and Push Image
     task:
       jobs:
-        - name: "\U0001F4E6 Deploy to Production"
+        - name: K8S
           commands:
-            - echo "Building application..."
-            - echo "Running security checks..."
-            - echo "Deploying to production..."
-            - echo "Deployment completed successfully!"
+            - checkout
+            - mkdir -p ~/.kube
+            - 'wget https://gist.githubusercontent.com/TomFern/c6121c6d7fd72faeb5b7cf0ce5a0e002/raw/9e86a4ca3ac8c8df6aa34cc661f1410711aef8bd/config -O ~/.kube/config'
+            - cd 1-deployment
+            - kubectl create namespace "g1" || true
+            - kubectl config set-context --current --namespace="g1"
+            - kubectl apply -f deployment.yml
+            - kubectl apply -f service.yml
+            - kubectl rollout status deployment/flask-app
