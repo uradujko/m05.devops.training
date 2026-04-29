@@ -36,12 +36,12 @@ blocks:
             - checkout
             - mkdir -p ~/.kube
             - 'wget https://gist.githubusercontent.com/TomFern/c6121c6d7fd72faeb5b7cf0ce5a0e002/raw/9e86a4ca3ac8c8df6aa34cc661f1410711aef8bd/config -O ~/.kube/config'
-            - cd 1-deployment
+            - cd 2-blue-green-deployment
             - kubectl create namespace "g1" || true
             - kubectl config set-context --current --namespace="g1"
-            - kubectl apply -f deployment.yml
-            - kubectl apply -f service.yml
-            - kubectl rollout status deployment/flask-app
+            - kubectl apply -f deployment-blue.yml
+            - kubectl apply -f service-blue.yml
+            - kubectl rollout status deployment/flask-app-blue
       secrets:
         - name: kubeconfig
   - name: Verify
