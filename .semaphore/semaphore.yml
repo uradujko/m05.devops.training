@@ -42,3 +42,12 @@ blocks:
             - kubectl apply -f deployment.yml
             - kubectl apply -f service.yml
             - kubectl rollout status deployment/flask-app
+  - name: Verify
+    dependencies:
+      - Deploy to Kubernetes
+    task:
+      jobs:
+        - name: Verify
+          commands:
+            - checkout
+            - kubectl get svc flask-app
