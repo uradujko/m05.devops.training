@@ -42,6 +42,8 @@ blocks:
             - kubectl apply -f deployment.yml
             - kubectl apply -f service.yml
             - kubectl rollout status deployment/flask-app
+      secrets:
+        - name: kubeconfig
   - name: Verify
     dependencies:
       - Deploy to Kubernetes
@@ -51,3 +53,5 @@ blocks:
           commands:
             - checkout
             - kubectl get svc flask-app
+      secrets:
+        - name: kubeconfig
